@@ -1,0 +1,5 @@
+.vscode
+*.py[ac]
+*/pycache/
+meblog/
+.postgresql_config
