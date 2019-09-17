@@ -89,8 +89,15 @@ export default {
       submitted: false
     };
   },
+  mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/assets/" + this.$route.params.id)
+      .then(response => {
+        this.asset = response.data;
+      });
+  },
   methods: {
-    create: function() {
+    update: function() {
       this.$validator.validate().then(result => {
         this.submitted = true;
         if (!result) {
@@ -98,7 +105,7 @@ export default {
         }
         // console.log("Posting submission");
         axios
-          .post(`http://127.0.0.1/api/assets/`, this.asset)
+          .put(`http://127.0.0.1/api/assets/${this.asset.id}`, this.asset)
           .then( () => {
             this.$router.push("/");
           });

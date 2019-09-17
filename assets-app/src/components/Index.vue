@@ -52,7 +52,7 @@ export default {
       if (confirm("Delete " + asset.name)) {
         axios
           .delete(`http://127.0.0.1:8000/api/assets/${asset.id}`)
-          .then(response => {
+          .then( () => {
             this.all();
           });
       }
