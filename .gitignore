@@ -3,3 +3,6 @@
 */pycache/
 meblog/
 .postgresql_config
+node_*
+vvue.zip
+*/migrations/
