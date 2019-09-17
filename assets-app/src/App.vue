@@ -7,7 +7,8 @@
         </h2>
         <router-link to="/create" class="btn btn-small btn-primary">Add Asset</router-link>
 
-        <routerview />
+
+        <router-view />
       </div>
     </div>
   </div>

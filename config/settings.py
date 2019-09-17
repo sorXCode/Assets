@@ -25,7 +25,7 @@ SECRET_KEY = '=w(ft7p7_sz4dsizb$lg@jz%p$*27g_o=4y#x2rm%w#_$h-a0l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -54,6 +54,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = [
+#     "http://127.0.0.1:8080",
+# ]
 
 ROOT_URLCONF = 'config.urls'
 

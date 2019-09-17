@@ -18,10 +18,10 @@
               <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ asset.name.charAt(0) }}</text>
             </svg>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4 col-md-6">
             <div class="card-body">
               <h5 class="card-title">{{ asset.name }}</h5>
-              <p class="card-text">{{ asset.amount }}</p>
+              <p class="card-text">NGN{{ asset.amount }}</p>
               <router-link
                 :to="{name: 'edit', params: { id: asset.id}}"
                 class="btn btn-sm btn-primary"
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <p v-if="assets.length === 0">You don't have any asset! LoL...</p>
+    <h2 v-if="assets.length === 0">You don't have any asset! LoL...</h2>
   </div>
 </template>
 <script>
@@ -52,7 +52,7 @@ export default {
       if (confirm("Delete " + asset.name)) {
         axios
           .delete(`http://127.0.0.1:8000/api/assets/${asset.id}`)
-          .then( () => {
+          .then(() => {
             this.all();
           });
       }
