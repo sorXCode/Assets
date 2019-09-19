@@ -11,7 +11,7 @@
           v-model="asset.name"
           v-validate="'required'"
           placeholder="P. Patek"
-          :class="{'is-invalid': error.has('asset.name') && submitted}"
+          :class="{'is-invalid': asset.name && submitted}"
         />
         <div class="invalid-feedback">Please provide asset name</div>
       </div>
@@ -26,7 +26,7 @@
           v-model="asset.category"
           v-validate="'required'"
           placeholder="Wristwatch"
-          :class="{'is-invalid': error.has('asset.category') && submitted}"
+          :class="{'is-invalid': asset.category && submitted}"
         />
         <div class="invalid-feedback">I can't tell if your asset is a car or not, I'm that dumb!</div>
       </div>
@@ -41,7 +41,7 @@
           v-model="asset.amount"
           v-validate="'required'"
           placeholder="#76450"
-          :class="{'is-invalid': error.has('asset.amount') && submitted}"
+          :class="{'is-invalid': asset.amount && submitted}"
         />
         <div class="invalid-feedback">Input Amount</div>
       </div>
@@ -56,7 +56,7 @@
           v-model="asset.lost"
           v-validate="'required'"
           value="true"
-          :class="{'is-invalid': error.has('asset.lost') && submitted}"
+          :class="{'is-invalid': asset.lost && submitted}"
         /> True
         <input
           type="radio"
@@ -66,7 +66,7 @@
           v-model="asset.lost"
           v-validate="'required'"
           value="false"
-          :class="{'is-invalid': error.has('asset.lost') && submitted}"
+          :class="{'is-invalid': asset.lost && submitted}"
         /> False
         <div class="invalid-feedback">Pick a side!</div>
       </div>

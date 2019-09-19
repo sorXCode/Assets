@@ -2,7 +2,7 @@
   <div class="pt-5">
     <form @submit.prevent="create" method="post">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">{{asset.name}}</label>
         <input
           type="text"
           name="name"
@@ -11,7 +11,7 @@
           v-model="asset.name"
           v-validate="'required'"
           placeholder="P. Patek"
-          :class="{'is-invalid': error.has('asset.name') && submitted}"
+          :class="{'is-invalid': asset.name && submitted}"
         />
         <div class="invalid-feedback">Please provide asset name</div>
       </div>
@@ -26,7 +26,7 @@
           v-model="asset.category"
           v-validate="'required'"
           placeholder="Wristwatch"
-          :class="{'is-invalid': error.has('asset.category') && submitted}"
+          :class="{'is-invalid': asset.category && submitted}"
         />
         <div class="invalid-feedback">I can't tell if your asset is a car or not, I'm that dumb!</div>
       </div>
@@ -41,7 +41,7 @@
           v-model="asset.amount"
           v-validate="'required'"
           placeholder="#76450"
-          :class="{'is-invalid': error.has('asset.amount') && submitted}"
+          :class="{'is-invalid': asset.amount && submitted}"
         />
         <div class="invalid-feedback">Input Amount</div>
       </div>
@@ -56,7 +56,7 @@
           v-model="asset.lost"
           v-validate="'required'"
           value="true"
-          :class="{'is-invalid': error.has('asset.lost') && submitted}"
+          :class="{'is-invalid': asset.lost && submitted}"
         /> True
         <input
           type="radio"
@@ -66,11 +66,11 @@
           v-model="asset.lost"
           v-validate="'required'"
           value="false"
-          :class="{'is-invalid': error.has('asset.lost') && submitted}"
+          :class="{'is-invalid': asset.lost && submitted}"
         /> False
         <div class="invalid-feedback">Pick a side!</div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
   </div>
 </template>
@@ -80,12 +80,13 @@ import axios from "axios";
 export default {
   data() {
     return {
-      asset: {
-        name: "",
-        category: "",
-        amount: "",
-        lost: ""
-      },
+      asset: [],
+      // {
+      //   name: "",
+      //   category: "",
+      //   amount: "",
+      //   lost: ""
+      // },
       submitted: false
     };
   },
@@ -95,6 +96,7 @@ export default {
       .then(response => {
         this.asset = response.data;
       });
+      console.log(this.asset);
   },
   methods: {
     update: function() {
@@ -106,7 +108,7 @@ export default {
         // console.log("Posting submission");
         axios
           .put(`http://127.0.0.1/api/assets/${this.asset.id}`, this.asset)
-          .then( () => {
+          .then(() => {
             this.$router.push("/");
           });
       });

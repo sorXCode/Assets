@@ -23,10 +23,10 @@
               <h5 class="card-title">{{ asset.name }}</h5>
               <p class="card-text">NGN{{ asset.amount }}</p>
               <router-link
-                :to="{name: 'edit', params: { id: asset.id}}"
+                :to="{name: 'edit', params: { id: asset.id }}"
                 class="btn btn-sm btn-primary"
               >Edit</router-link>
-              <button class="btn btn-danger btn-sm ml-1" v-on:click="deleteItem(asset.id)">Delete</button>
+              <button class="btn btn-danger btn-sm ml-1" v-on:click="deleteAsset(asset)">Delete</button>
             </div>
           </div>
         </div>
